@@ -1,9 +1,31 @@
+/*Main Menu*/
+
 #mainMenu{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100%;
+}
+
+#menuLang{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3cqmin;
+    width: fit-content;
+    font-size: 2cqmin;
+    padding: 1cqmin;
+    border-radius: 1cqmin;
+    appearance: base-select;
+}
+
+#menuLang::picker-icon{
+    transition: all 0.2s;
+}
+
+#menuLang:open::picker-icon{
+    transform: scaleY(-1);
 }
 
 #menuTitle{
@@ -17,16 +39,18 @@
     margin-block: 3cqmin;
     padding: 1cqmin;
     font-family: "Bitcount Grid Single", system-ui;
-    border-radius: 4dvw;
+    border-radius: 5cqmin;
     border: var(--orange) solid 0.4cqmin;
     padding: 2cqmin;
-    font-size: 7cqmin;
-    width: 100%;
+    font-size: 3cqmax;
+    min-width: fit-content;
+    width: 80%;
     background-color: var(--gray);
     color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.1s;
 }
 
 .menuBt:hover{
@@ -37,6 +61,14 @@
 .menuBt:active{
     background-color: var(--orange);
 }
+
+#menuBtPlay{
+    text-shadow: 0.5cqmin 0.5cqmin var(--orange);
+}
+
+/*Main Menu vége*/
+
+/*Settings*/
 
 #mainMenuSettings{
     display: flex;

@@ -11,18 +11,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    cursor: url(../src/image/cursor.png), auto;
 }
 
 body, html{
     height: 100%;
     width: 100%;
-    cursor: url(../src/image/cursor.png), auto;
+    min-height: 400px;
 }
 
 body{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     background-color: var(--dark-gray);
     background-image: url(../src/image/background.png);
     background-size: 200px;
@@ -30,4 +33,14 @@ body{
     color: var(--white);
     border: var(--orange) 0.1vw solid;
     height: 100%;
+    animation-name: mainBackground;
+    animation-timing-function: linear;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes mainBackground {
+    0%{background-position: 0px 0px;}
+    100%{background-position: 1000px 1000px;}
 }
