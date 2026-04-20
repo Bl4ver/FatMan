@@ -7,7 +7,7 @@
     flex-direction: column;
     min-height: fit-content;
     height: 100%;
-    min-width: fit-content;
+    width: fit-content;
 }
 
 #menuLang{
@@ -35,11 +35,11 @@
     font-family: "Nabla", system-ui;
     font-size: 8vmax;
     letter-spacing: 1vmax;
+    text-align: center;
 }
 
 .menuBt{
     margin-block: 1vmax;
-    font-family: "Bitcount Grid Single", system-ui;
     border-radius: 5vmax;
     border: var(--orange) solid 0.2vmax;
     padding: 1vmax;
@@ -71,10 +71,33 @@
 
 /*Settings*/
 
-#mainMenuSettings{
+#settingsMenu{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+#settingsBack{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1.5vmax;
+    width: fit-content;
+    font-size: 1.5vmax;
+    padding: 0.5vmax;
+    border-radius: 1vmax;
+}
+
+input[type="range"]{
+    width: 100%;
+    accent-color: var(--orange);
+}
+
+label{
+    font-size: 2vmax;
+    font-weight: 600;
+    text-shadow: 0.1vmax 0.1vmax var(--orange);
+    text-align: left;
+    width: 100%;
+}

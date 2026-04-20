@@ -13,6 +13,7 @@
     box-sizing: border-box;
     user-select: none;
     cursor: url(../src/image/cursor.png), auto;
+    font-family: "Bitcount Grid Single", system-ui;
 }
 
 body, html{
@@ -37,6 +38,16 @@ body{
     animation-timing-function: linear;
     animation-duration: 30s;
     animation-iteration-count: infinite;
+}
+
+#screen{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
 }
 
 
