@@ -5,18 +5,20 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    min-height: fit-content;
     height: 100%;
+    min-width: fit-content;
 }
 
 #menuLang{
     position: absolute;
     top: 0;
     right: 0;
-    margin: 3cqmin;
+    margin: 1.5vmax;
     width: fit-content;
-    font-size: 2cqmin;
-    padding: 1cqmin;
-    border-radius: 1cqmin;
+    font-size: 1.5vmax;
+    padding: 0.5vmax;
+    border-radius: 1vmax;
     appearance: base-select;
 }
 
@@ -29,20 +31,19 @@
 }
 
 #menuTitle{
-    margin-bottom: 10cqmin;
+    margin-bottom: 5vmax;
     font-family: "Nabla", system-ui;
-    font-size: 15cqmin;
-    letter-spacing: 2cqmin;
+    font-size: 8vmax;
+    letter-spacing: 1vmax;
 }
 
 .menuBt{
-    margin-block: 3cqmin;
-    padding: 1cqmin;
+    margin-block: 1vmax;
     font-family: "Bitcount Grid Single", system-ui;
-    border-radius: 5cqmin;
-    border: var(--orange) solid 0.4cqmin;
-    padding: 2cqmin;
-    font-size: 3cqmax;
+    border-radius: 5vmax;
+    border: var(--orange) solid 0.2vmax;
+    padding: 1vmax;
+    font-size: 3vmax;
     min-width: fit-content;
     width: 80%;
     background-color: var(--gray);
@@ -50,7 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.1s;
+    transition: background 0.1s;
 }
 
 .menuBt:hover{
@@ -63,7 +64,7 @@
 }
 
 #menuBtPlay{
-    text-shadow: 0.5cqmin 0.5cqmin var(--orange);
+    text-shadow: 0.2vmax 0.2vmax var(--orange);
 }
 
 /*Main Menu vége*/

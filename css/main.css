@@ -32,7 +32,7 @@ body{
     background-repeat: repeat;
     color: var(--white);
     border: var(--orange) 0.1vw solid;
-    height: 100%;
+    min-height: fit-content;
     animation-name: mainBackground;
     animation-timing-function: linear;
     animation-duration: 30s;
