@@ -4,10 +4,12 @@ export class Renderer {
     }
 
     loadScreen(templateName) {
-        this.templateContainer.innerHTML = '';
         const template = document.getElementById(templateName);
-        const clone = template.content.cloneNode(true);
-        this.templateContainer.appendChild(clone);
+        if (template) {
+            this.templateContainer.innerHTML = '';
+            const clone = template.content.cloneNode(true);
+            this.templateContainer.appendChild(clone);
+        }
     }
 
     renderScene(scene) {

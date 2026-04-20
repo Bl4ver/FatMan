@@ -15,9 +15,12 @@ export class Engine {
         this.uiManager.init();
         this.renderer.loadScreen(this.uiManager.currentTemplateName);
         this.audioManager.init();
+
+        this.start();
     }
 
-    start(){
+    start() {
         console.log('Engine started');
+        document.addEventListener("click", () => { this.audioManager.playMusic("mi") }, { once: true });
     }
 }

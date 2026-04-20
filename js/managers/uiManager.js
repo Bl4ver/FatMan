@@ -18,11 +18,30 @@ export class UiManager {
                 this.currentTemplateName = `${templateName}`;
                 this.engine.renderer.loadScreen(this.currentTemplateName);
             }
+        });
 
+        document.addEventListener('change', (e) => {
             if (e.target.id === 'menuLang') {
                 const lang = e.target.value;
                 this.engine.audioManager.playSound('choose');
                 this.engine.langManager.changeLang(lang.toLowerCase());
+            }
+        });
+
+        document.addEventListener('input', (e) => {
+            if (e.target.id === 'inputMasterVolume') {
+                const volume = e.target.value / 100;
+                this.engine.audioManager.setVolume(volume, "master");
+            }
+
+            if (e.target.id === 'inputMusicVolume') {
+                const volume = e.target.value / 100;
+                this.engine.audioManager.setVolume(volume, "music");
+            }
+
+            if (e.target.id === 'inputSFXVolume') {
+                const volume = e.target.value / 100;
+                this.engine.audioManager.setVolume(volume, "sfx");
             }
         });
     }
