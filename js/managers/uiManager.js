@@ -1,7 +1,7 @@
 export class UiManager {
     constructor(enginge) {
         this.enginge = enginge;
-        this.currentTemplateName = 'mainMenuTemp';
+        this.currentTemplateName = 'settingsTemp';
         this.lastTemplateName = null;
     }
 
