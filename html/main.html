@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/game.css">
+    <script type="module" src="../js/core/main.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <select id="menuLang" class="menuBt">
-        <option selected>EN</option>
-        <option>HU</option>
-        <option>GER</option>
-    </select>
-    <div id="mainMenu">
-            <h1 id="menuTitle">Fat-Man</h1>
-            <button data-button="" id="menuBtPlay" class="menuBt">Play</button>
-            <button data-button="" id="menuBtSettings" class="menuBt">Settings</button>
-            <button data-button="" id="menuBtDesc" class="menuBt">Info</button>
-        </div>
+    <section id="screen">
+
+    </section>
     <template id="mainMenuTemp">
+        <select id="menuLang" class="menuBt">
+            <option selected>EN</option>
+            <option>HU</option>
+            <option>GER</option>
+        </select>
+
         <div id="mainMenu">
             <h1 id="menuTitle">Fat-Man</h1>
             <button data-button="" id="menuBtPlay" class="menuBt">Play</button>
-            <button data-button="" id="menuBtSettings" class="menuBt">Settings</button>
+            <button data-button="settingsTemp" id="menuBtSettings" class="menuBt">Settings</button>
             <button data-button="" id="menuBtDesc" class="menuBt">Info</button>
         </div>
     </template>
+
+    <template id="settingsTemp">
+        <button data-button="mainMenuTemp" class="menuBt">back</button>
+    </template>
 </body>
+
 </html>
