@@ -5,12 +5,18 @@ export class LangManager {
             'en': {
                 "play": "Play",
                 "settings": "Settings",
-                "info": "Info"
+                "info": "Info",
+                "masterVolume": "Master Volume",
+                "musicVolume": "Music Volume",
+                "sfxVolume": "SFX Volume"
             },
             'hu': {
                 "play": "Játék",
                 "settings": "Beállítások",
-                "info": "Info"
+                "info": "Info",
+                "masterVolume": "Fő hangerő",
+                "musicVolume": "Zene hangerő",
+                "sfxVolume": "SFX Volume"
             }
         }
     }

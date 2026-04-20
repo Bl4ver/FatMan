@@ -21,6 +21,6 @@ export class Engine {
 
     start() {
         console.log('Engine started');
-        document.addEventListener("click", () => { this.audioManager.playMusic("mi") }, { once: true });
+        document.addEventListener("click", () => { this.audioManager.playMusic("bg-music1") }, { once: true });
     }
 }
