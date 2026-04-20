@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&family=Nabla&display=swap');
+:root{
+    --dark-gray: #333333;
+    --gray: #555555;
+    --orange: #ff5500;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html{
+    height: 100%;
+    width: 100%;
+    cursor: url(../src/image/cursor.png), auto;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-gray);
+    background-image: url(../src/image/background.png);
+    background-size: 200px;
+    background-repeat: repeat;
+    color: var(--white);
+    border: var(--orange) 0.1vw solid;
+    height: 100%;
+}

@@ -1,0 +1,47 @@
+#mainMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+#menuTitle{
+    margin-bottom: 10cqmin;
+    font-family: "Nabla", system-ui;
+    font-size: 15cqmin;
+    letter-spacing: 2cqmin;
+}
+
+.menuBt{
+    margin-block: 3cqmin;
+    padding: 1cqmin;
+    font-family: "Bitcount Grid Single", system-ui;
+    border-radius: 4dvw;
+    border: var(--orange) solid 0.4cqmin;
+    padding: 2cqmin;
+    font-size: 7cqmin;
+    width: 100%;
+    background-color: var(--gray);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuBt:hover{
+    background-color: hsl(from var(--gray) h s 50);
+    font-weight: 500;
+}
+
+.menuBt:active{
+    background-color: var(--orange);
+}
+
+#mainMenuSettings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
