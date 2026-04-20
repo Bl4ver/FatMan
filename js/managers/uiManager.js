@@ -1,7 +1,7 @@
 export class UiManager {
-    constructor(enginge) {
-        this.enginge = enginge;
-        this.currentTemplateName = 'settingsTemp';
+    constructor(engine) {
+        this.engine = engine;
+        this.currentTemplateName = 'mainMenuTemp';
         this.lastTemplateName = null;
     }
 
@@ -14,8 +14,15 @@ export class UiManager {
             if (e.target.dataset.button) {
                 const templateName = e.target.dataset.button;
                 this.lastTemplateName = this.currentTemplateName;
+                this.engine.audioManager.playSound('button-click');
                 this.currentTemplateName = `${templateName}`;
-                this.enginge.renderer.loadScreen(this.currentTemplateName);
+                this.engine.renderer.loadScreen(this.currentTemplateName);
+            }
+
+            if (e.target.id === 'menuLang') {
+                const lang = e.target.value;
+                this.engine.audioManager.playSound('choose');
+                this.engine.langManager.changeLang(lang.toLowerCase());
             }
         });
     }
