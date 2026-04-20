@@ -11,7 +11,6 @@ export class Renderer {
     }
 
     renderScene(scene) {
-        this.clear();
         this.templateContainer.innerHTML = `Rendering scene: ${scene}`;
     }
 }
