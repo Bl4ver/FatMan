@@ -25,5 +25,12 @@ export class UiManager {
                 this.engine.langManager.changeLang(lang.toLowerCase());
             }
         });
+        
+
+        document.addEventListener('input', (e) => {
+            if (e.target.tagName.toLowerCase() == "input" && e.target.type == "range"){
+                document.querySelector(`label[for='${e.target.id}']`).children[0].innerHTML = e.target.value;
+            }
+        });
     }
 }
