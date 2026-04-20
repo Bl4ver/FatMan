@@ -76,6 +76,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: auto;
 }
 
 #settingsBack{
@@ -92,6 +93,7 @@
 input[type="range"]{
     width: 100%;
     accent-color: var(--orange);
+    margin-bottom: 1vmax;
 }
 
 label{
