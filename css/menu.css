@@ -103,3 +103,9 @@ label{
     text-align: left;
     width: 100%;
 }
+
+.volumeValue{
+    font-size: 1.5vmax;
+    color: var(--orange);
+    text-shadow: none;
+}
