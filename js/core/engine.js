@@ -2,19 +2,27 @@ import { Renderer } from './renderer.js';
 import { UiManager } from '../managers/uiManager.js';
 import { LangManager } from '../managers/langManager.js';
 import { AudioManager } from '../managers/audioManager.js';
+import { SaveManager } from '../managers/saveManager.js';
+import { InputManager } from '../managers/inputManager.js';
+import { Labyrinth } from './labyrinth.js';
 
 export class Engine {
     constructor() {
-        this.renderer = new Renderer();
         this.uiManager = new UiManager(this);
+        this.renderer = new Renderer(this);
         this.langManager = new LangManager();
         this.audioManager = new AudioManager();
+        this.saveManager = new SaveManager(this);
+        this.inputManager = new InputManager();
+        this.labyrinth = new Labyrinth(this);
     }
 
     init() {
-        this.uiManager.init();
+        this.saveManager.init();
         this.renderer.loadScreen(this.uiManager.currentTemplateName);
+        this.uiManager.init();
         this.audioManager.init();
+        this.labyrinth.init();
 
         this.start();
     }

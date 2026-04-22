@@ -26,7 +26,7 @@
 
         <div id="mainMenu">
             <h1 id="menuTitle">Fat-Man</h1>
-            <button data-button="" id="menuBtPlay" class="menuBt" data-translate="play">Play</button>
+            <button data-button="playTemp" id="menuBtPlay" class="menuBt" data-translate="play">Play</button>
             <button data-button="settingsTemp" id="menuBtSettings" class="menuBt" data-translate="settings">Settings</button>
             <button data-button="" id="menuBtDesc" class="menuBt" data-translate="info">Info</button>
         </div>
@@ -42,7 +42,7 @@
         <div id="settingsMenu">
             <h1 id="menuTitle" style="letter-spacing: 0;">Settings</h1>
 
-            <label for="inputMasterVolume" id="labelMaster" data-translate="masterVolume">Master Volume (<span class="volumeValue" id="masterVolumeValue">0</span>)</label>
+            <label for="inputMasterVolume" id="labelMaster" data-translate="masterVolume">Master Volume </label>(<span class="volumeValue" id="masterVolumeValue">0</span>)
             <input id="inputMasterVolume" type="range" min="0" max="100" step="1" value="50">
 
             <label for="inputMusicVolume" id="labelMusic" data-translate="musicVolume">Music Volume (<span class="volumeValue" id="musicVolumeValue">0</span>)</label>
@@ -53,6 +53,12 @@
 
             <button data-button="s" class="menuBt">TESZT BUTTON</button>
         </div>
+    </template>
+    
+    <template id="playTemp">
+        <section id="labyrinth">
+
+        </section>
     </template>
 </body>
 

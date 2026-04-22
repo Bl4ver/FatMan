@@ -18,8 +18,9 @@ export class UiManager {
                 this.currentTemplateName = `${templateName}`;
                 this.engine.renderer.loadScreen(this.currentTemplateName);
 
-                if (this.currentTemplateName === "settingsTemp")
-                    this.updateSettingUi();
+                if (templateName === "playTemp"){
+                    this.engine.labyrinth.generate()
+                }
             }
         });
 
@@ -29,35 +30,30 @@ export class UiManager {
                 this.engine.audioManager.playSound('choose');
                 this.engine.langManager.changeLang(lang.toLowerCase());
             }
+
+            this.engine.saveManager.saveGame();
         });
 
         document.addEventListener('input', (e) => {
             if (e.target.id === 'inputMasterVolume') {
-                const volume = e.target.value / 100;
+                const volume = e.target.value;
                 document.getElementById("masterVolumeValue").innerHTML = volume;
-                this.engine.audioManager.setVolume(volume, "master");
+                this.engine.audioManager.setVolume(volume / 100, "master");
             }
 
             if (e.target.id === 'inputMusicVolume') {
-                const volume = e.target.value / 100;
+                const volume = e.target.value;
                 document.getElementById("musicVolumeValue").innerHTML = volume;
-                this.engine.audioManager.setVolume(volume, "music");
+                this.engine.audioManager.setVolume(volume / 100, "music");
             }
 
             if (e.target.id === 'inputSFXVolume') {
-                const volume = e.target.value / 100;
+                const volume = e.target.value;
                 document.getElementById("sfxVolumeValue").innerHTML = volume;
-                this.engine.audioManager.setVolume(volume, "sfx");
+                this.engine.audioManager.setVolume(volume / 100, "sfx");
             }
+            this.engine.saveManager.saveGame();
         });
     }
 
-    updateSettingUi() {
-        document.getElementById("inputMasterVolume").value = this.engine.audioManager.volumes.master * 100;
-        document.getElementById("masterVolumeValue").innerHTML = this.engine.audioManager.volumes.master * 100;
-        document.getElementById("inputMusicVolume").value = this.engine.audioManager.volumes.music * 100;
-        document.getElementById("musicVolumeValue").innerHTML = this.engine.audioManager.volumes.music * 100;
-        document.getElementById("inputSFXVolume").value = this.engine.audioManager.volumes.sfx * 100;
-        document.getElementById("sfxVolumeValue").innerHTML = this.engine.audioManager.volumes.sfx * 100;
-    }
 }
