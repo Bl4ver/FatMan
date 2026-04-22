@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back_ios"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios" />
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" href="../css/game.css">
@@ -28,12 +28,12 @@
             <h1 id="menuTitle">Fat-Man</h1>
             <button data-button="" id="menuBtPlay" class="menuBt" data-translate="play">Play</button>
             <button data-button="settingsTemp" id="menuBtSettings" class="menuBt" data-translate="settings">Settings</button>
-            <button data-button="" id="menuBtDesc" class="menuBt" data-translate="info">Info</button>
+            <button data-button="infoTemp" id="menuBtDesc" class="menuBt" data-translate="info">Info</button>
         </div>
     </template>
 
     <template id="settingsTemp">
-        <button id="settingsBack" data-button="mainMenuTemp" class="menuBt"><span class="material-symbols-outlined">arrow_back_ios</span>Back</button>
+        <button id="settingsBack" data-button="mainMenuTemp" class="menuBt"><img src="../src/image/arrow_back_ios_26dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">Back</button>
         <select id="menuLang" class="menuBt">
             <option selected>EN</option>
             <option>HU</option>
@@ -42,16 +42,74 @@
         <div id="settingsMenu">
             <h1 id="menuTitle" style="letter-spacing: 0;">Settings</h1>
 
-            <label for="inputMasterVolume" id="labelMaster" data-translate="masterVolume">Master Volume (<span class="volumeValue" id="masterVolumeValue">0</span>)</label>
+            <section class="label">
+                <label for="inputMasterVolume" id="labelMaster" data-translate="masterVolume">Master Volume </label>
+                (<span class="volumeValue" id="masterVolumeValue">0</span>)
+            </section>
+
             <input id="inputMasterVolume" type="range" min="0" max="100" step="1" value="50">
 
-            <label for="inputMusicVolume" id="labelMusic" data-translate="musicVolume">Music Volume (<span class="volumeValue" id="musicVolumeValue">0</span>)</label>
+            <section class="label">
+                <label for="inputMusicVolume" id="labelMusic" data-translate="musicVolume">Music Volume </label>
+                (<span class="volumeValue" id="musicVolumeValue">0</span>)  
+            </section>
+
             <input id="inputMusicVolume" type="range" min="0" max="100" step="1" value="50">
 
-            <label for="inputSFXVolume" id="labelSFX" data-translate="sfxVolume">SFX Volume (<span class="volumeValue" id="sfxVolumeValue">0</span>)</label>
+            <section class="label">
+                <label for="inputSFXVolume" id="labelSFX" data-translate="sfxVolume">SFX Volume </label>
+                (<span class="volumeValue" id="sfxVolumeValue">0</span>)
+            </section>
             <input id="inputSFXVolume" type="range" min="0" max="100" step="1" value="50">
 
             <button data-button="s" class="menuBt">TESZT BUTTON</button>
+        </div>
+    </template>
+
+    <template id="infoTemp">
+        <button id="settingsBack" data-button="mainMenuTemp" class="menuBt"><span class="material-symbols-outlined">arrow_back_ios</span>Back</button>
+        <select id="menuLang" class="menuBt">
+            <option selected>EN</option>
+            <option>HU</option>
+            <option>GER</option>
+        </select>
+        <div id="infoContainer">
+            <h1 id="infoTitle">Gameplay</h1>
+            <div id="infoCategories">
+                <section data-desc="Gameplay" id="infoSectGameplay" class="ctSelected">Gameplay</section>
+                <section data-desc="Characters" id="infoSectCharacters">Characters</section>
+                <section data-desc="Map" id="infoSectMap">The Map</section>
+                <section data-desc="Controls" id="infoSectControls">Controls</section>
+            </div>
+            <div id="infoDesc">
+                <span>A játékmenet alapjai</span><br>
+                A feladat rendkívül egyszerű, mégis kihívásokkal teli: egy zárt labirintusban kell irányítanunk a főhőst, azzal a céllal, hogy a pályán lévő összes elszórt pontot összegyűjtsük. A feszültségről a folyamatosan járőröző és ránk vadászó ellenfelek – általában szellemek vagy apró szörnyek – gondoskodnak, akiket minden áron el kell kerülnünk.<br>
+                <br><span>Különleges képességek</span><br>
+                A pályák bizonyos pontjain elrejtett speciális bónuszok (energiabogyók) megfordítják az erőviszonyokat. Ezek felvételével rövid időre a mi karakterünk válik a vadásszá, és esélyt kapunk arra, hogy ideiglenesen kiiktassuk az üldözőinket extra pontokért.<br>
+                <br><span>Pályadizájn és nehezedés</span><br>
+                Ahogy haladunk előre, a labirintusok vonalvezetése egyre trükkösebbé válik, a menekülési útvonalak pedig beszűkülnek. Az ellenfelek nemcsak felgyorsulnak a magasabb szinteken, hanem a mozgásuk és az AI (mesterséges intelligencia) is agresszívabbá válik, így a túléléshez egyre precízebb manőverezésre és taktikus előrelátásra van szükség.<br>
+                <br><span>Látványvilág és atmoszféra</span><br>
+                A vizuális stílus hű marad a retro gyökerekhez: élénk, vibráló színek kontrasztja érvényesül a sötét háttér előtt, ami azonnal megteremti az egykori sötét játéktermek hangulatát. Ezt egészítik ki a jellegzetes, pittyegő hanghatások és a feszültséget fokozó hangeffektek, amelyek együtt egy nosztalgikus, mégis izgalmas atmoszférát teremtenek.
+            </div>
+            <template id="infoDescGameplay">
+                <span>A játékmenet alapjai</span><br>
+                A feladat rendkívül egyszerű, mégis kihívásokkal teli: egy zárt labirintusban kell irányítanunk a főhőst, azzal a céllal, hogy a pályán lévő összes elszórt pontot összegyűjtsük. A feszültségről a folyamatosan járőröző és ránk vadászó ellenfelek – általában szellemek vagy apró szörnyek – gondoskodnak, akiket minden áron el kell kerülnünk.<br>
+                <br><span>Különleges képességek</span><br>
+                A pályák bizonyos pontjain elrejtett speciális bónuszok (energiabogyók) megfordítják az erőviszonyokat. Ezek felvételével rövid időre a mi karakterünk válik a vadásszá, és esélyt kapunk arra, hogy ideiglenesen kiiktassuk az üldözőinket extra pontokért.<br>
+                <br><span>Pályadizájn és nehezedés</span><br>
+                Ahogy haladunk előre, a labirintusok vonalvezetése egyre trükkösebbé válik, a menekülési útvonalak pedig beszűkülnek. Az ellenfelek nemcsak felgyorsulnak a magasabb szinteken, hanem a mozgásuk és az AI (mesterséges intelligencia) is agresszívabbá válik, így a túléléshez egyre precízebb manőverezésre és taktikus előrelátásra van szükség.<br>
+                <br><span>Látványvilág és atmoszféra</span><br>
+                A vizuális stílus hű marad a retro gyökerekhez: élénk, vibráló színek kontrasztja érvényesül a sötét háttér előtt, ami azonnal megteremti az egykori sötét játéktermek hangulatát. Ezt egészítik ki a jellegzetes, pittyegő hanghatások és a feszültséget fokozó hangeffektek, amelyek együtt egy nosztalgikus, mégis izgalmas atmoszférát teremtenek.
+            </template>
+            <template id="infoDescCharacters">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis autem deserunt asperiores. Ea, ab itaque. Eos facere omnis sint provident quaerat eum dolores numquam non doloribus expedita doloremque consequatur error, sapiente assumenda praesentium totam at deleniti. Deleniti minus maxime animi assumenda dolor atque enim doloremque dolores ut rem! Aut minima aspernatur assumenda! Voluptates ad sint minima quas atque iusto nesciunt, quisquam illo dignissimos dolorem. Delectus vitae odio itaque praesentium eum sed eaque assumenda rem unde placeat dignissimos iste velit accusantium illum culpa eligendi nulla officiis fugit, at inventore. Nulla natus enim consequuntur assumenda voluptate ea ducimus mollitia eum culpa soluta?
+            </template>
+            <template id="infoDescMap">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum atque commodi, veniam ipsum consequatur veritatis officiis quis mollitia aut vitae fugit, impedit temporibus omnis accusantium culpa optio ipsa quod. Nesciunt exercitationem iusto quos similique. Repellendus aliquam ut, soluta et corporis, nemo fugit minima voluptatem aperiam eaque veniam? Corporis numquam possimus magnam, architecto aspernatur tempore consectetur aliquam voluptas blanditiis, nulla cumque ducimus dolores laborum excepturi voluptates alias eos quas quae suscipit officia consequatur reiciendis cupiditate! Est, minima reiciendis. Aliquid quam tempore adipisci itaque ipsa accusamus placeat architecto, libero pariatur possimus ipsam doloremque vero ex labore? Dolores neque velit ipsum voluptatum impedit!
+            </template>
+            <template id="infoDescControls">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, voluptate. Quaerat magnam, sequi incidunt, itaque quos cupiditate commodi soluta sed repudiandae earum dolorum laboriosam illo accusantium esse necessitatibus dolores ducimus similique ratione reiciendis, quo id deserunt mollitia. Nam accusamus tempora ab dignissimos, nihil perspiciatis officia ducimus architecto, porro dolorem laboriosam exercitationem quod, consequatur aliquid! Libero consectetur aliquid natus officia reiciendis porro delectus aperiam fugit hic? Maxime molestiae fugit deserunt inventore assumenda placeat possimus, voluptatibus consequatur eaque adipisci dolorum reiciendis ex rerum dolor officia non aspernatur aliquam. Blanditiis eligendi nulla porro voluptatum quasi error! Molestiae mollitia in autem fugit corrupti sunt!
+            </template>
         </div>
     </template>
 </body>
