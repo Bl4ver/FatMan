@@ -19,8 +19,9 @@ export class UiManager {
                 this.currentTemplateName = `${templateName}`;
                 this.engine.renderer.loadScreen(this.currentTemplateName);
 
-                if (this.currentTemplateName === "settingsTemp")
-                    this.updateSettingUi();
+                if (templateName === "playTemp"){
+                    this.engine.labyrinth.generate()
+                }
             }
             if (e.target.dataset.desc){
                 this.engine.audioManager.playSound('button-click');
@@ -41,6 +42,8 @@ export class UiManager {
                 this.engine.audioManager.playSound('button-click');
                 this.engine.langManager.changeLang(lang.toLowerCase());
             }
+
+            this.engine.saveManager.saveGame();
         });
 
         document.addEventListener('input', (e) => {
@@ -61,15 +64,8 @@ export class UiManager {
                 document.getElementById("sfxVolumeValue").innerHTML = volume;
                 this.engine.audioManager.setVolume(volume / 100, "sfx");
             }
+            this.engine.saveManager.saveGame();
         });
     }
 
-    updateSettingUi() {
-        document.getElementById("inputMasterVolume").value = this.engine.audioManager.volumes.master * 100;
-        document.getElementById("masterVolumeValue").innerHTML = this.engine.audioManager.volumes.master * 100;
-        document.getElementById("inputMusicVolume").value = this.engine.audioManager.volumes.music * 100;
-        document.getElementById("musicVolumeValue").innerHTML = this.engine.audioManager.volumes.music * 100;
-        document.getElementById("inputSFXVolume").value = this.engine.audioManager.volumes.sfx * 100;
-        document.getElementById("sfxVolumeValue").innerHTML = this.engine.audioManager.volumes.sfx * 100;
-    }
 }

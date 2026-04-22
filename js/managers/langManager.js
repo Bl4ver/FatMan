@@ -27,6 +27,7 @@ export class LangManager {
 
     translatePage() {
         document.querySelectorAll('[data-translate]').forEach(element => {
+            console.log(`Translating element with key: ${element.dataset.translate}`);
             const key = element.dataset.translate;
             element.textContent = this.translations[this.lang][key];
         });
@@ -35,6 +36,8 @@ export class LangManager {
     changeLang(lang) {
         if (this.translations[lang]) {
             this.lang = lang;
+            console.log(`Language changed to: ${lang.toUpperCase()}`);
+            document.getElementById('menuLang').value = lang.toUpperCase();
             this.translatePage();
         }
     }
