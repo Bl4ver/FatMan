@@ -1,5 +1,7 @@
 export class InputManager{
-    constructor() {
+    constructor(engine, uimanager) {
+        this.engine = engine;
+        this.uimanager = uimanager;
         this.keys = {};
         this.mouse = {
             x: 0,
@@ -11,6 +13,21 @@ export class InputManager{
     init() {
         window.addEventListener('keydown', (e) => {
             this.keys[e.code] = true;
+
+            if (e.key == " " && this.uimanager.currentTemplateName == "mainMenuTemp"){
+                this.uimanager.ChangeTemplate("playTemp");
+            }
+
+            switch (e.key == "Escape", this.uimanager.currentTemplateName) {
+                case (true, "playTemp"):
+                    this.uimanager.ChangeTemplate("settingsTemp");
+                    break;
+                case (true, "mainMenuTemp"):
+                    break;
+                default:
+                    this.uimanager.ChangeTemplate(this.uimanager.lastTemplateName);
+                    break;
+            }
         });
 
         window.addEventListener('keyup', (e) => {

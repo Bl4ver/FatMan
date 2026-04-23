@@ -14,14 +14,7 @@ export class UiManager {
         document.addEventListener('click', (e) => {
             if (e.target.dataset.button) {
                 this.engine.audioManager.playSound('button-click');
-                const templateName = e.target.dataset.button;
-                this.lastTemplateName = this.currentTemplateName;
-                this.currentTemplateName = `${templateName}`;
-                this.engine.renderer.loadScreen(this.currentTemplateName);
-
-                if (templateName === "playTemp"){
-                    this.engine.labyrinth.generate()
-                }
+                this.ChangeTemplate(e.target.dataset.button);                
             }
             if (e.target.dataset.desc){
                 this.engine.audioManager.playSound('button-click');
@@ -66,6 +59,16 @@ export class UiManager {
             }
             this.engine.saveManager.saveGame();
         });
+    }
+
+    ChangeTemplate(templateName) {
+        this.lastTemplateName = this.currentTemplateName;
+        this.currentTemplateName = templateName;
+        this.engine.renderer.loadScreen(this.currentTemplateName);
+
+        if (templateName === "playTemp"){
+            this.engine.labyrinth.generate()
+        }
     }
 
 }
