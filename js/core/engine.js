@@ -8,11 +8,11 @@ import { Labyrinth } from './labyrinth.js';
 
 export class Engine {
     constructor() {
-        this.uiManager = new UiManager(this);
         this.renderer = new Renderer(this);
         this.langManager = new LangManager();
         this.audioManager = new AudioManager();
         this.saveManager = new SaveManager(this);
+        this.uiManager = new UiManager(this);
         this.inputManager = new InputManager(this, this.uiManager);
         this.labyrinth = new Labyrinth(this);
     }

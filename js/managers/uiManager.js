@@ -65,9 +65,15 @@ export class UiManager {
         this.lastTemplateName = this.currentTemplateName;
         this.currentTemplateName = templateName;
         this.engine.renderer.loadScreen(this.currentTemplateName);
+
         const backBt = document.getElementById("settingsBack");
         if (backBt != null)
             backBt.dataset.button = this.lastTemplateName;
+        const langBt = document.getElementById("menuLang");
+        if (langBt != null)
+            langBt.value = this.engine.langManager.lang.toUpperCase();
+            console.log(this.engine.langManager.lang.toUpperCase());
+            
 
         if (templateName === "playTemp"){
             this.engine.labyrinth.generate()
