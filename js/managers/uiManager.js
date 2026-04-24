@@ -1,7 +1,7 @@
 export class UiManager {
     constructor(engine) {
         this.engine = engine;
-        this.currentTemplateName = 'mainMenuTemp'; //mainMenuTemp, settingsTemp, playTemp
+        this.currentTemplateName = 'playTemp'; //mainMenuTemp, settingsTemp, playTemp
         this.lastTemplateName = null;
         this.currentDescName = 'Gameplay';
     }

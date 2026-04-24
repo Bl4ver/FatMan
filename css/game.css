@@ -30,3 +30,8 @@
 .visited {
     background-color: lightblue;
 }
+
+.ghost-door{
+    background-color: blue;
+    padding: 10px;
+}
