@@ -65,6 +65,9 @@ export class UiManager {
         this.lastTemplateName = this.currentTemplateName;
         this.currentTemplateName = templateName;
         this.engine.renderer.loadScreen(this.currentTemplateName);
+        const backBt = document.getElementById("settingsBack");
+        if (backBt != null)
+            backBt.dataset.button = this.lastTemplateName;
 
         if (templateName === "playTemp"){
             this.engine.labyrinth.generate()

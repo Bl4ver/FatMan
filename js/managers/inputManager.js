@@ -14,8 +14,10 @@ export class InputManager{
         window.addEventListener('keydown', (e) => {
             this.keys[e.code] = true;
 
-            if (e.key == " " && this.uimanager.currentTemplateName == "mainMenuTemp"){
-                this.uimanager.ChangeTemplate("playTemp");
+            if (e.key == " "){
+                if (this.uimanager.currentTemplateName == "mainMenuTemp")
+                    this.uimanager.ChangeTemplate("playTemp");
+                return;
             }
 
             switch (e.key == "Escape", this.uimanager.currentTemplateName) {
