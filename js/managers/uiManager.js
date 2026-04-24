@@ -1,7 +1,7 @@
 export class UiManager {
     constructor(engine) {
         this.engine = engine;
-        this.currentTemplateName = 'mainMenuTemp';
+        this.currentTemplateName = 'playTemp'; //mainMenuTemp, settingsTemp, playTemp
         this.lastTemplateName = null;
         this.currentDescName = 'Gameplay';
     }
@@ -14,7 +14,10 @@ export class UiManager {
         document.addEventListener('click', (e) => {
             if (e.target.dataset.button) {
                 this.engine.audioManager.playSound('button-click');
-                this.ChangeTemplate(e.target.dataset.button);                
+                const templateName = e.target.dataset.button;
+                this.lastTemplateName = this.currentTemplateName;
+                this.currentTemplateName = `${templateName}`;
+                this.engine.renderer.loadScreen(this.currentTemplateName);
             }
             if (e.target.dataset.desc){
                 this.engine.audioManager.playSound('button-click');
@@ -59,16 +62,6 @@ export class UiManager {
             }
             this.engine.saveManager.saveGame();
         });
-    }
-
-    ChangeTemplate(templateName) {
-        this.lastTemplateName = this.currentTemplateName;
-        this.currentTemplateName = templateName;
-        this.engine.renderer.loadScreen(this.currentTemplateName);
-
-        if (templateName === "playTemp"){
-            this.engine.labyrinth.generate()
-        }
     }
 
 }

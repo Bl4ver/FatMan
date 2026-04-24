@@ -1,0 +1,32 @@
+#labyrinth{
+    display: grid;
+    border: 1px solid black;
+    height: 90dvh;
+}
+
+
+#labyrinth #row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#labyrinth .cell {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wall {
+    border: 1px solid green;
+}
+
+.path {
+    background-color: yellow;
+}
+
+.visited {
+    background-color: lightblue;
+}

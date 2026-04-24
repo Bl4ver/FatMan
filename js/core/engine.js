@@ -13,7 +13,7 @@ export class Engine {
         this.langManager = new LangManager();
         this.audioManager = new AudioManager();
         this.saveManager = new SaveManager(this);
-        this.inputManager = new InputManager(this, this.uiManager);
+        this.inputManager = new InputManager();
         this.labyrinth = new Labyrinth(this);
     }
 
@@ -23,7 +23,6 @@ export class Engine {
         this.uiManager.init();
         this.audioManager.init();
         this.labyrinth.init();
-        this.inputManager.init();
 
         this.start();
     }

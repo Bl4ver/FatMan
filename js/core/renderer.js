@@ -14,6 +14,10 @@ export class Renderer {
             if (templateName === "settingsTemp") {
                 this.updateSettingUi();
             }
+            else if (templateName === "playTemp") {
+                this.engine.labyrinth.generate()
+
+            }
 
             this.engine.langManager.translatePage();
         }
@@ -25,7 +29,7 @@ export class Renderer {
 
     updateSettingUi() {
         console.log('Updating settings UI with current audio volumes');
-        
+
         document.getElementById("inputMasterVolume").value = this.engine.audioManager.volumes.master * 100;
         document.getElementById("masterVolumeValue").innerHTML = this.engine.audioManager.volumes.master * 100;
         document.getElementById("inputMusicVolume").value = this.engine.audioManager.volumes.music * 100;

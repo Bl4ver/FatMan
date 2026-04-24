@@ -35,10 +35,12 @@ export class LangManager {
 
     changeLang(lang) {
         if (this.translations[lang]) {
-            this.lang = lang;
-            console.log(`Language changed to: ${lang.toUpperCase()}`);
-            document.getElementById('menuLang').value = lang.toUpperCase();
-            this.translatePage();
+            if (document.getElementById('menuLang')) {
+                this.lang = lang;
+                console.log(`Language changed to: ${lang.toUpperCase()}`);
+                document.getElementById('menuLang').value = lang.toUpperCase();
+                this.translatePage();
+            }
         }
     }
 }
