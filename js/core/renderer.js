@@ -4,7 +4,18 @@ export class Renderer {
         this.templateContainer = document.getElementById('screen');
     }
 
-    loadScreen(templateName) {
+    update() {
+        let playerDiv = document.getElementById("player");
+        if (playerDiv) {
+            let targetCell = document.getElementById(`cell-${this.engine.player.x}-${this.engine.player.y}`);
+            
+            if (targetCell && playerDiv.parentElement !== targetCell) {
+                targetCell.appendChild(playerDiv);
+            }
+        }
+    }
+
+    async loadScreen(templateName) {
         const template = document.getElementById(templateName);
         if (template) {
             this.templateContainer.innerHTML = '';
@@ -15,8 +26,11 @@ export class Renderer {
                 this.updateSettingUi();
             }
             else if (templateName === "playTemp") {
-                this.engine.labyrinth.generate()
-
+                
+                // Ha kikapcsolnád, írd be: (false)
+                await this.engine.labyrinth.generate(); 
+                
+                this.engine.player.init();
             }
 
             this.engine.langManager.translatePage();
