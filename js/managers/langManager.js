@@ -17,6 +17,14 @@ export class LangManager {
                 "masterVolume": "Fő hangerő",
                 "musicVolume": "Zene hangerő",
                 "sfxVolume": "SFX Volume"
+            },
+            'ger': {
+                "play": "Spiel",
+                "settings": "Einstellungen",
+                "info": "Info",
+                "masterVolume": "Master-Lautstärke",
+                "musicVolume": "Musik-Lautstärke",
+                "sfxVolume": "SFX-Lautstärke"
             }
         }
     }
@@ -35,12 +43,9 @@ export class LangManager {
 
     changeLang(lang) {
         if (this.translations[lang]) {
-            if (document.getElementById('menuLang')) {
-                this.lang = lang;
-                console.log(`Language changed to: ${lang.toUpperCase()}`);
-                document.getElementById('menuLang').value = lang.toUpperCase();
-                this.translatePage();
-            }
+            this.lang = lang;
+            console.log(`Language changed to: ${lang.toUpperCase()}`);
+            this.translatePage();
         }
     }
 }

@@ -1,7 +1,7 @@
 export class UiManager {
     constructor(engine) {
         this.engine = engine;
-        this.currentTemplateName = 'playTemp'; //mainMenuTemp, settingsTemp, playTemp
+        this.currentTemplateName = 'mainMenuTemp'; //mainMenuTemp, settingsTemp, playTemp
         this.lastTemplateName = null;
         this.currentDescName = 'Gameplay';
     }
@@ -62,6 +62,25 @@ export class UiManager {
             }
             this.engine.saveManager.saveGame();
         });
+    }
+
+    ChangeTemplate(templateName) {
+        this.lastTemplateName = this.currentTemplateName;
+        this.currentTemplateName = templateName;
+        this.engine.renderer.loadScreen(this.currentTemplateName);
+
+        const backBt = document.getElementById("settingsBack");
+        if (backBt != null)
+            backBt.dataset.button = this.lastTemplateName;
+        const langBt = document.getElementById("menuLang");
+        if (langBt != null)
+            langBt.value = this.engine.langManager.lang.toUpperCase();
+            console.log(this.engine.langManager.lang.toUpperCase());
+            
+
+        if (templateName === "playTemp"){
+            this.engine.labyrinth.generate()
+        }
     }
 
 }

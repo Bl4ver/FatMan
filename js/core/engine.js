@@ -8,12 +8,12 @@ import { Labyrinth } from './labyrinth.js';
 
 export class Engine {
     constructor() {
-        this.uiManager = new UiManager(this);
         this.renderer = new Renderer(this);
         this.langManager = new LangManager();
         this.audioManager = new AudioManager();
         this.saveManager = new SaveManager(this);
-        this.inputManager = new InputManager();
+        this.uiManager = new UiManager(this);
+        this.inputManager = new InputManager(this);
         this.labyrinth = new Labyrinth(this);
     }
 
