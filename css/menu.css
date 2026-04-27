@@ -8,6 +8,13 @@
     min-height: fit-content;
     height: 100%;
     width: fit-content;
+    --border-angle: 90deg;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
 #menuLang{
@@ -47,7 +54,6 @@
     font-size: clamp(1.75rem, 1.3304rem + 2.0982vw, 4.6875rem);
     min-width: fit-content;
     width: 80%;
-    background: linear-gradient(var(--dark-gray), var(--dark-gray)) padding-box, conic-gradient(from calc(var(--border-angle) + 0deg),var(--orange) 50%,transparent) border-box;
     color: var(--white);
     display: flex;
     justify-content: center;
@@ -57,8 +63,19 @@
     box-shadow: 0px 0px 5px var(--orange);
 }
 
-.menuBt:nth-child(odd){
-    background: linear-gradient(var(--dark-gray), var(--dark-gray)) padding-box, conic-gradient(from calc(var(--border-angle) + 180deg),var(--orange) 50%,transparent) border-box;
+@supports (order: sibling-index()) {
+    .menuBt{
+        background: linear-gradient(var(--dark-gray), var(--dark-gray)) padding-box, conic-gradient(from calc(var(--border-angle) + 120deg * sibling-index()),var(--orange) 50%,transparent) border-box;
+    }
+}
+
+@supports not (order: sibling-index()) {
+    .menuBt{
+        background: linear-gradient(var(--dark-gray), var(--dark-gray)) padding-box, conic-gradient(from calc(var(--border-angle)),var(--orange) 50%,transparent) border-box;
+    }
+    .menuBt:nth-child(odd){
+        background: linear-gradient(var(--dark-gray), var(--dark-gray)) padding-box, conic-gradient(from calc(var(--border-angle) + 180deg),var(--orange) 50%,transparent) border-box;
+    }
 }
 
 .menuBt:hover{
@@ -73,12 +90,6 @@
 
 #menuBtPlay{
     text-shadow: 0.2vmax 0.2vmax var(--orange);
-}
-
-@property --border-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
 }
 
 @keyframes menuBtAnim {
