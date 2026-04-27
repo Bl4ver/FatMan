@@ -1,7 +1,6 @@
-export class InputManager{
-    constructor(engine, uimanager) {
-        this.engine = engine;
-        this.uimanager = uimanager;
+export class InputManager {
+    constructor(engine) {
+        this.engine = engine
         this.keys = {};
         this.mouse = {
             x: 0,
@@ -14,21 +13,23 @@ export class InputManager{
         window.addEventListener('keydown', (e) => {
             this.keys[e.code] = true;
 
-            if (e.key == " "){
-                if (this.uimanager.currentTemplateName == "mainMenuTemp")
-                    this.uimanager.ChangeTemplate("playTemp");
+            /*if (e.key == " "){
+                if (this.engine.uiManager.currentTemplateName == "mainMenuTemp")
+                    this.engine.uiManager.ChangeTemplate("playTemp");
                 return;
-            }
+            }*/
 
-            switch (e.key == "Escape", this.uimanager.currentTemplateName) {
-                case (true, "playTemp"):
-                    this.uimanager.ChangeTemplate("settingsTemp");
-                    break;
-                case (true, "mainMenuTemp"):
-                    break;
-                default:
-                    this.uimanager.ChangeTemplate(this.uimanager.lastTemplateName);
-                    break;
+            if (e.key === "Escape") {
+                switch (this.engine.uiManager.currentTemplateName) {
+                    case "playTemp":
+                        this.engine.uiManager.ChangeTemplate("settingsTemp");
+                        break;
+                    case "mainMenuTemp":
+                        break;
+                    default:
+                        this.engine.uiManager.ChangeTemplate(this.engine.uiManager.lastTemplateName);
+                        break;
+                }
             }
         });
 
@@ -56,5 +57,24 @@ export class InputManager{
 
     isMouseDown() {
         return this.mouse.pressed;
+    }
+
+    update() {
+        if (this.engine.player.playerDiv) {
+            if (this.isKeyDown("KeyW")) {
+            this.engine.player.direction = "up";
+            this.engine.player.playerDiv.style.transform = "rotate(-90deg) scaleX(1)"; 
+        } else if (this.isKeyDown("KeyS")) {
+            this.engine.player.direction = "down";
+            this.engine.player.playerDiv.style.transform = "rotate(90deg) scaleX(1)";
+        } else if (this.isKeyDown("KeyA")) {
+            this.engine.player.direction = "left";
+            this.engine.player.playerDiv.style.transform = "rotate(0deg) scaleX(-1)";
+        } else if (this.isKeyDown("KeyD")) {
+            this.engine.player.direction = "right";
+            this.engine.player.playerDiv.style.transform = "rotate(0deg) scaleX(1)";
+        }
+        }
+        console.log(this.engine.player.x, this.engine.player.y)
     }
 }

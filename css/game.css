@@ -1,0 +1,46 @@
+#labyrinth{
+    display: grid;
+    border: 1px solid black;
+    height: 90dvh;
+}
+
+
+#labyrinth #row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#labyrinth .cell {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wall {
+    border: 1px solid green;
+}
+
+.path {
+    background-color: yellow;
+}
+
+.visited {
+    background-color: lightblue;
+}
+
+.ghost-door{
+    background-color: blue;
+    /* padding: 10px; */
+}
+
+#player{
+    background-image: url(../src/image/fatman.png);
+    background-size: cover;
+    background-position: center;
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    z-index: 10;
+}
