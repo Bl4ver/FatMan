@@ -23,6 +23,7 @@ export class Engine {
         this.score = 0;
         this.level = 1;
         this.ghosts = [];
+        this.isRunning = false;
     }
 
     init() {
@@ -33,21 +34,14 @@ export class Engine {
         this.labyrinth.init();
         this.inputManager.init();
         this.collisionManager.init();
-
         this.start();
     }
 
     async setupPlayMode() {
-        // Megvárjuk, amíg a labirintus 100%-ban elkészül (és bekerülnek a ghost-house cellák)
-        await this.labyrinth.generate();
-
-        // Játékos lerakása
+        await this.labyrinth.generate(); 
         this.player.init();
-
-        // Szellemek tömbjének ürítése újrakezdésnél
+        
         this.ghosts = [];
-
-        // Szellemek inicializálása
         let carrotGhost = new Ghost(this, 'carrot', 'carrot-ghost');
         carrotGhost.init();
         this.ghosts.push(carrotGhost);
@@ -67,18 +61,12 @@ export class Engine {
     }
 
     loop(timestamp) {
-        if (!this.isRunning) return;
-
-        // 1. DeltaTime (dt) kiszámítása (Milliszekundumban)
+        if (!this.isRunning) return; // Ha false, a loop végleg megszakad!
         let deltaTime = timestamp - this.lastTime;
         this.lastTime = timestamp;
 
-        // 2. UPDATE: A világ logikájának frissítése
         this.update(deltaTime);
-
-        // 3. ÚJRA! Szólunk a böngészőnek, hogy a következő frissítésnél hívja meg megint a loop-ot
         requestAnimationFrame((timestamp) => this.loop(timestamp));
-
         this.collisionManager.checkCollisions();
     }
 
@@ -97,43 +85,28 @@ export class Engine {
     }
 
     async nextLevel() {
-        this.isRunning = false; // Megállítjuk a logikát a váltás alatt
-
-        // Random győzelmi hang sorsolása és lejátszása (1-10)
+        this.stop(); // Korrekten leállítjuk a loopot
+        
+        // Random győzelmi hang kiválasztása (1-10)
         if (this.audioManager) {
-            let randomVictory = Math.floor(Math.random() * 10) + 1;
-            this.audioManager.playSound(`victory${randomVictory}`);
+            let randomVictoryNum = Math.floor(Math.random() * 10) + 1;
+            this.audioManager.playSound(`victory${randomVictoryNum}`);
         }
 
-        // Rövid szünet, hogy végigmenjen a hang
+        // Rövid várakozás a hang miatt
         await new Promise(r => setTimeout(r, 1000));
 
         this.level++;
-
-        // Pálya méretének növelése (pl. +2 egység oldalanként)
+        
+        // Pálya növelése
         this.labyrinth.size.width += 2;
         this.labyrinth.size.height += 2;
 
-        console.log(`Gratulálok! ${this.level}. szint következik. Méret: ${this.labyrinth.size.width}x${this.labyrinth.size.height}`);
+        console.log(`Szintlépés: ${this.level}. szint. Új méret: ${this.labyrinth.size.width}x${this.labyrinth.size.height}`);
 
-        // Új pálya felállítása
+        // Új játékmenet felállítása
         await this.setupPlayMode();
-
-        this.isRunning = true; // Mehet tovább a játék
-    }
-
-    async setupPlayMode() {
-        // Töröljük a régi szellemeket
-        this.ghosts = [];
-
-        // Generálás (már az új méretekkel)
-        await this.labyrinth.generate();
-
-        this.player.init();
-
-        // Újra lerakjuk a szellemet (vagy többet)
-        let carrotGhost = new Ghost(this, 'carrot', 'carrot-ghost');
-        carrotGhost.init();
-        this.ghosts.push(carrotGhost);
+        
+        this.start(); // ÚJRAINDÍTJUK a loopot! Ez hiányzott!
     }
 }
