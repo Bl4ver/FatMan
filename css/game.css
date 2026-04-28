@@ -17,10 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .wall {
-    border: 1px solid green;
+    border: 1px solid var(--orange);
 }
 
 .path {
@@ -44,3 +45,31 @@
     aspect-ratio: 1 / 1;
     z-index: 10;
 }
+
+.hamburger {
+    width: 65%;
+    aspect-ratio: 1 / 1;
+    background-image: url('../src/image/coin-hambi.png'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.ghost {
+    width: 80%;
+    height: 80%;
+    position: absolute; /* Kiszakítjuk a folyamatból, hogy ne nyomja össze a hamburger */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Pontosan középre rakja */
+    z-index: 20; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in-out; /* Ettől lesz sima az átmenet a cellák között */
+}
+
+.carrot-ghost {
+    background-image: url('../../src/image/carrot-front.png'); 
+}
+
+

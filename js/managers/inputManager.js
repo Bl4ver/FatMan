@@ -60,21 +60,23 @@ export class InputManager {
     }
 
     update() {
+        let player = document.getElementById("player");
         if (this.engine.player.playerDiv) {
             if (this.isKeyDown("KeyW")) {
             this.engine.player.direction = "up";
-            this.engine.player.playerDiv.style.transform = "rotate(-90deg) scaleX(1)"; 
+            player.style.backgroundImage = "url('../src/image/fatman-back.png')";
         } else if (this.isKeyDown("KeyS")) {
             this.engine.player.direction = "down";
-            this.engine.player.playerDiv.style.transform = "rotate(90deg) scaleX(1)";
+            player.style.backgroundImage = "url('../src/image/fatman-front.png')";
         } else if (this.isKeyDown("KeyA")) {
             this.engine.player.direction = "left";
-            this.engine.player.playerDiv.style.transform = "rotate(0deg) scaleX(-1)";
+            player.style.transform = "scaleX(-1)";
+            player.style.backgroundImage = "url('../src/image/fatman-side.png')"
         } else if (this.isKeyDown("KeyD")) {
             this.engine.player.direction = "right";
-            this.engine.player.playerDiv.style.transform = "rotate(0deg) scaleX(1)";
+        player.style.transform = "scaleX(1)";
+            player.style.backgroundImage = "url('../src/image/fatman-side.png')"
         }
         }
-        console.log(this.engine.player.x, this.engine.player.y)
     }
 }

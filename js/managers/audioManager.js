@@ -12,20 +12,34 @@ export class AudioManager {
     init() {
         this.loadSound('button-click');
         this.loadSound('choose');
-    }
+        this.loadSound('eat');
 
+        for (let i = 1; i <= 7; i++) {
+            this.loadSound(`victory${i}`);
+        }
+    }
 
     loadSound(name, type = "sfx") {
         const audio = new Audio(`../../src/audio/${name}.mp3`);
         this.sounds[name] = audio;
-        this.sounds[name].type = type;
+        this.sounds[name].type = type; // Eltároljuk a típust, hogy a klónozásnál tudjuk a hangerőt
     }
 
     playSound(name) {
         if (this.sounds[name]) {
-            this.sounds[name].currentTime = 0;
-            this.sounds[name].volume = this.volumes[this.sounds[name].type] * this.volumes.master;
-            this.sounds[name].play();
+            // Létrehozunk egy KLÓNT az eredeti hangból, így egyszerre több is szólhat megszakítás nélkül
+            const soundClone = this.sounds[name].cloneNode();
+
+            // Beállítjuk a hangerőt az SFX és a Master volume alapján
+            soundClone.volume = this.volumes[this.sounds[name].type] * this.volumes.master;
+
+            // Lejátsszuk a klónt
+            soundClone.play();
+
+            // Opcionális takarítás: ha véget ért a hang, töröljük a memóriából
+            soundClone.onended = () => {
+                soundClone.remove();
+            };
         }
     }
 
@@ -40,20 +54,21 @@ export class AudioManager {
     }
 
     setVolume(value, type) {
-        this.volume = value;
-        this.volumes[type] = this.volume;
-        if (type === "music")
-            this.music.volume = this.volumes[type] * this.volumes.master;
+        // A kapott értéket frissítjük a konkrét típushoz
+        this.volumes[type] = value;
 
-        if (type === "master") {
-            this.music.volume = this.volumes["music"] * this.volumes.master
-        }
-        else {
-            Object.values(this.sounds).forEach(element => {
-                if (element.type === type)
-                    element.volume = this.volumes[type] * this.volumes.master;
-            });
+        // Ha épp szól a zene, annak a hangerejét azonnal frissítjük
+        if (type === "music" && this.music) {
+            this.music.volume = this.volumes.music * this.volumes.master;
         }
 
+        // Ha a fő hangerőt húzzuk, a zenét is frissíteni kell
+        if (type === "master" && this.music) {
+            this.music.volume = this.volumes.music * this.volumes.master;
+        }
+
+        // Megjegyzés: A hangeffekteket (SFX) klónozzuk és amúgy is rövidek, 
+        // ezért azoknál az aktuálisan lejátszott hangok hangereje nem frissül azonnal beállításkor,
+        // de a következő 'playSound' hívás már az új hangerővel fog megszólalni.
     }
 }

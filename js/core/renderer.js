@@ -26,11 +26,8 @@ export class Renderer {
                 this.updateSettingUi();
             }
             else if (templateName === "playTemp") {
-                
-                // Ha kikapcsolnád, írd be: (false)
-                await this.engine.labyrinth.generate(); 
-                
-                this.engine.player.init();
+                // A játéktér logikájának delegálása az Engine-nek
+                await this.engine.setupPlayMode(); 
             }
 
             this.engine.langManager.translatePage();
