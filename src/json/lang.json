@@ -1,0 +1,32 @@
+{
+    "en": {
+        "play": "Play",
+        "settings": "Settings",
+        "info": "Info",
+        "masterVolume": "Master Volume",
+        "musicVolume": "Music Volume",
+        "sfxVolume": "SFX Volume",
+        "backButton": "<img src='../src/image/arrow_back_ios_26dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg'>Back",
+        "infoTitle": "Gameplay"
+    },
+    "hu": {
+        "play": "Játék",
+        "settings": "Beállítások",
+        "info": "Info",
+        "masterVolume": "Fő hangerő",
+        "musicVolume": "Zene hangerő",
+        "sfxVolume": "SFX Volume",
+        "backButton": "<img src='../src/image/arrow_back_ios_26dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg'>Vissza",
+        "infoTitle": "Játékmenet"
+    },
+    "ger": {
+        "play": "Spiel",
+        "settings": "Einstellungen",
+        "info": "Info",
+        "masterVolume": "Master-Lautstärke",
+        "musicVolume": "Musik-Lautstärke",
+        "sfxVolume": "SFX-Lautstärke",
+        "backButton": "<img src='../src/image/arrow_back_ios_26dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg'>Zurück",
+        "infoTitle": "Spielablauf"
+    }
+}

@@ -33,7 +33,7 @@
     </template>
 
     <template id="settingsTemp">
-        <button id="settingsBack" data-button="mainMenuTemp" class="menuBt"><img src="../src/image/arrow_back_ios_26dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">Back</button>
+        <button id="settingsBack" data-button="mainMenuTemp" data-translate="backButton" class="menuBt"><img src="../src/image/arrow_back_ios_26dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">Back</button>
         <select id="menuLang" class="menuBt">
             <option selected>EN</option>
             <option>HU</option>
@@ -67,14 +67,14 @@
     </template>
 
     <template id="infoTemp">
-        <button id="settingsBack" data-button="mainMenuTemp" class="menuBt"><span class="material-symbols-outlined">arrow_back_ios</span>Back</button>
+        <button id="settingsBack" data-button="mainMenuTemp" data-translate="backButton" class="menuBt"><span class="material-symbols-outlined">arrow_back_ios</span>Back</button>
         <select id="menuLang" class="menuBt">
             <option selected>EN</option>
             <option>HU</option>
             <option>GER</option>
         </select>
         <div id="infoContainer">
-            <h1 id="infoTitle">Gameplay</h1>
+            <h1 id="infoTitle" data-translate="infoTitle">Gameplay</h1>
             <div id="infoCategories">
                 <section data-desc="Gameplay" id="infoSectGameplay" class="ctSelected">Gameplay</section>
                 <section data-desc="Characters" id="infoSectCharacters">Characters</section>
