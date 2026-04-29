@@ -1,7 +1,7 @@
 export class UiManager {
     constructor(engine) {
         this.engine = engine;
-        this.currentTemplateName = 'playTemp'; //mainMenuTemp, settingsTemp, playTemp
+        this.currentTemplateName = 'mainMenuTemp'; //mainMenuTemp, settingsTemp, playTemp
         this.lastTemplateName = null;
         this.currentDescName = 'Gameplay';
     }
@@ -15,9 +15,7 @@ export class UiManager {
             if (e.target.dataset.button) {
                 this.engine.audioManager.playSound('button-click');
                 const templateName = e.target.dataset.button;
-                this.lastTemplateName = this.currentTemplateName;
-                this.currentTemplateName = `${templateName}`;
-                this.engine.renderer.loadScreen(this.currentTemplateName);
+                this.ChangeTemplate(templateName);
             }
             if (e.target.dataset.desc){
                 this.engine.audioManager.playSound('button-click');
@@ -76,7 +74,6 @@ export class UiManager {
         const langBt = document.getElementById("menuLang");
         if (langBt != null) {
             langBt.value = this.engine.langManager.lang.toUpperCase();
-            console.log(this.engine.langManager.lang.toUpperCase());
         }
     }
 }

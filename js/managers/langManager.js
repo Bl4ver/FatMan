@@ -1,50 +1,44 @@
 export class LangManager {
     constructor() {
         this.lang = 'en';
-        this.translations = {
-            'en': {
-                "play": "Play",
-                "settings": "Settings",
-                "info": "Info",
-                "masterVolume": "Master Volume",
-                "musicVolume": "Music Volume",
-                "sfxVolume": "SFX Volume"
-            },
-            'hu': {
-                "play": "Játék",
-                "settings": "Beállítások",
-                "info": "Info",
-                "masterVolume": "Fő hangerő",
-                "musicVolume": "Zene hangerő",
-                "sfxVolume": "SFX Volume"
-            },
-            'ger': {
-                "play": "Spiel",
-                "settings": "Einstellungen",
-                "info": "Info",
-                "masterVolume": "Master-Lautstärke",
-                "musicVolume": "Musik-Lautstärke",
-                "sfxVolume": "SFX-Lautstärke"
+        this.translations = null;
+        this.ready = this.loadLang();
+    }
+
+    async loadLang() {
+        try {
+            const response = await fetch('../../src/json/lang.json');
+
+            if (!response.ok) {
+                throw new Error(`HTTP hiba! Státusz: ${response.status}`);
             }
+
+            this.translations = await response.json();
+
+        } catch (error) {
+            console.error('Nem sikerült feldolgozni a fájlt:', error);
         }
     }
+
 
     init() {
 
     }
 
-    translatePage() {
+    async translatePage() {
+        await this.ready;
         document.querySelectorAll('[data-translate]').forEach(element => {
-            console.log(`Translating element with key: ${element.dataset.translate}`);
+            /*console.log(`Translating element with key: ${element.dataset.translate}`);*/
             const key = element.dataset.translate;
-            element.textContent = this.translations[this.lang][key];
+            element.innerHTML = this.translations[this.lang][key];
         });
     }
 
-    changeLang(lang) {
+    async changeLang(lang) {
+        await this.ready;
         if (this.translations[lang]) {
             this.lang = lang;
-            console.log(`Language changed to: ${lang.toUpperCase()}`);
+            /*console.log(`Language changed to: ${lang.toUpperCase()}`);*/
             this.translatePage();
         }
     }
