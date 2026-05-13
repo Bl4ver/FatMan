@@ -1,7 +1,7 @@
 #labyrinth{
     display: grid;
     border: 1px solid black;
-    height: 90dvh;
+    height: 75vmin;
 }
 
 

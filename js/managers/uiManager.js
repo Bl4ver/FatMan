@@ -21,12 +21,15 @@ export class UiManager {
                 this.engine.audioManager.playSound('button-click');
                 const descName = e.target.dataset.desc;
                 const infoDesc = document.getElementById("infoDesc");
-                infoDesc.innerHTML = document.getElementById(`infoDesc${descName}`).innerHTML;
                 const newInfoSect = document.getElementById(`infoSect${descName}`);
-                document.getElementById(`infoTitle`).innerHTML = newInfoSect.innerHTML;
+                const title = document.getElementById(`infoTitle`);
+                title.innerHTML = newInfoSect.innerHTML;
                 document.getElementById(`infoSect${this.currentDescName}`).classList.toggle("ctSelected");
+                infoDesc.dataset.translate = `infoDesc${descName}`;
+                title.dataset.translate = `infoTitle${descName}`;
                 newInfoSect.classList.toggle("ctSelected");
                 this.currentDescName = descName;
+                this.engine.langManager.translatePage();
             }
         });
 
