@@ -32,7 +32,8 @@ export class SaveManager {
             }
             console.log('Game loaded!');
         } else {
-            console.log('No saved game found.');
+            console.log('No saved game found. So I created one!');
+            this.saveGame();
         }
     }
 }

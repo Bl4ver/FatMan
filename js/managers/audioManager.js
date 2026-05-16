@@ -12,20 +12,28 @@ export class AudioManager {
     init() {
         this.loadSound('button-click');
         this.loadSound('choose');
+        this.loadSound('eat');
+        
+        // Betöltjük mind a 10 győzelmi hangot
+        for (let i = 1; i <= 5; i++) {
+            this.loadSound(`victory${i}`);
+        }
     }
-
 
     loadSound(name, type = "sfx") {
         const audio = new Audio(`../../src/audio/${name}.mp3`);
         this.sounds[name] = audio;
-        this.sounds[name].type = type;
+        this.sounds[name].type = type; 
     }
 
     playSound(name) {
         if (this.sounds[name]) {
-            this.sounds[name].currentTime = 0;
-            this.sounds[name].volume = this.volumes[this.sounds[name].type] * this.volumes.master;
-            this.sounds[name].play();
+            const soundClone = this.sounds[name].cloneNode();
+            soundClone.volume = this.volumes[this.sounds[name].type] * this.volumes.master;
+            soundClone.play();
+            soundClone.onended = () => {
+                soundClone.remove();
+            };
         }
     }
 
@@ -40,20 +48,12 @@ export class AudioManager {
     }
 
     setVolume(value, type) {
-        this.volume = value;
-        this.volumes[type] = this.volume;
-        if (type === "music")
-            this.music.volume = this.volumes[type] * this.volumes.master;
-
-        if (type === "master") {
-            this.music.volume = this.volumes["music"] * this.volumes.master
+        this.volumes[type] = value; 
+        if (type === "music" && this.music) {
+            this.music.volume = this.volumes.music * this.volumes.master;
         }
-        else {
-            Object.values(this.sounds).forEach(element => {
-                if (element.type === type)
-                    element.volume = this.volumes[type] * this.volumes.master;
-            });
+        if (type === "master" && this.music) {
+            this.music.volume = this.volumes.music * this.volumes.master;
         }
-
     }
 }

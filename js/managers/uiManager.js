@@ -1,7 +1,7 @@
 export class UiManager {
     constructor(engine) {
         this.engine = engine;
-        this.currentTemplateName = 'mainMenuTemp';
+        this.currentTemplateName = 'mainMenuTemp'; //mainMenuTemp, settingsTemp, playTemp
         this.lastTemplateName = null;
         this.currentDescName = 'Gameplay';
     }
@@ -15,24 +15,21 @@ export class UiManager {
             if (e.target.dataset.button) {
                 this.engine.audioManager.playSound('button-click');
                 const templateName = e.target.dataset.button;
-                this.lastTemplateName = this.currentTemplateName;
-                this.currentTemplateName = `${templateName}`;
-                this.engine.renderer.loadScreen(this.currentTemplateName);
-
-                if (templateName === "playTemp"){
-                    this.engine.labyrinth.generate()
-                }
+                this.ChangeTemplate(templateName);
             }
             if (e.target.dataset.desc){
                 this.engine.audioManager.playSound('button-click');
                 const descName = e.target.dataset.desc;
                 const infoDesc = document.getElementById("infoDesc");
-                infoDesc.innerHTML = document.getElementById(`infoDesc${descName}`).innerHTML;
                 const newInfoSect = document.getElementById(`infoSect${descName}`);
-                document.getElementById(`infoTitle`).innerHTML = newInfoSect.innerHTML;
+                const title = document.getElementById(`infoTitle`);
+                title.innerHTML = newInfoSect.innerHTML;
                 document.getElementById(`infoSect${this.currentDescName}`).classList.toggle("ctSelected");
+                infoDesc.dataset.translate = `infoDesc${descName}`;
+                title.dataset.translate = `infoTitle${descName}`;
                 newInfoSect.classList.toggle("ctSelected");
                 this.currentDescName = descName;
+                this.engine.langManager.translatePage();
             }
         });
 
@@ -68,4 +65,18 @@ export class UiManager {
         });
     }
 
+    ChangeTemplate(templateName) {
+        this.lastTemplateName = this.currentTemplateName;
+        this.currentTemplateName = templateName;
+        this.engine.renderer.loadScreen(this.currentTemplateName);
+
+        const backBt = document.getElementById("settingsBack");
+        if (backBt != null)
+            backBt.dataset.button = this.lastTemplateName;
+            
+        const langBt = document.getElementById("menuLang");
+        if (langBt != null) {
+            langBt.value = this.engine.langManager.lang.toUpperCase();
+        }
+    }
 }

@@ -17,6 +17,25 @@
     font-family: "Bitcount Grid Single", system-ui;
 }
 
+::-webkit-scrollbar{
+    width: 1vmax;
+}
+
+::-webkit-scrollbar-track{
+    background-color: var(--orange);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--dark-gray);
+    border-radius: 2vmax;
+    border: var(--orange) solid 0.2vmax;
+    transition: all 0.1s;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--gray);
+}
+
 body, html{
     height: 100%;
     width: 100%;

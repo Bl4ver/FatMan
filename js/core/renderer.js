@@ -4,7 +4,18 @@ export class Renderer {
         this.templateContainer = document.getElementById('screen');
     }
 
-    loadScreen(templateName) {
+    update() {
+        let playerDiv = document.getElementById("player");
+        if (playerDiv) {
+            let targetCell = document.getElementById(`cell-${this.engine.player.x}-${this.engine.player.y}`);
+            
+            if (targetCell && playerDiv.parentElement !== targetCell) {
+                targetCell.appendChild(playerDiv);
+            }
+        }
+    }
+
+    async loadScreen(templateName) {
         const template = document.getElementById(templateName);
         if (template) {
             this.templateContainer.innerHTML = '';
@@ -13,6 +24,10 @@ export class Renderer {
 
             if (templateName === "settingsTemp") {
                 this.updateSettingUi();
+            }
+            else if (templateName === "playTemp") {
+                // A játéktér logikájának delegálása az Engine-nek
+                await this.engine.setupPlayMode(); 
             }
 
             this.engine.langManager.translatePage();
@@ -25,7 +40,7 @@ export class Renderer {
 
     updateSettingUi() {
         console.log('Updating settings UI with current audio volumes');
-        
+
         document.getElementById("inputMasterVolume").value = this.engine.audioManager.volumes.master * 100;
         document.getElementById("masterVolumeValue").innerHTML = this.engine.audioManager.volumes.master * 100;
         document.getElementById("inputMusicVolume").value = this.engine.audioManager.volumes.music * 100;

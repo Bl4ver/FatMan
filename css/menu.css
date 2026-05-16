@@ -20,6 +20,7 @@
     padding: 0.5vmax;
     border-radius: 1vmax;
     appearance: base-select;
+    background-color: var(--dark-gray);
 }
 
 #menuLang::picker-icon{
@@ -41,21 +42,28 @@
 .menuBt{
     margin-block: 1vmax;
     border-radius: 5vmax;
-    border: var(--orange) solid 0.2vmax;
+    border: transparent solid 0.2vmax;
     padding: 1vmax;
     font-size: clamp(1.75rem, 1.3304rem + 2.0982vw, 4.6875rem);
     min-width: fit-content;
     width: 80%;
-    background-color: var(--gray);
+    background: linear-gradient(var(--dark-gray), var(--dark-gray)) padding-box, conic-gradient(from calc(var(--border-angle) + 0deg),var(--orange) 50%,transparent) border-box;
     color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background 0.1s;
+    animation: menuBtAnim 5s 0s linear infinite forwards;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0px 0px 5px var(--orange);
+}
+
+.menuBt:nth-child(odd){
+    background: linear-gradient(var(--dark-gray), var(--dark-gray)) padding-box, conic-gradient(from calc(var(--border-angle) + 180deg),var(--orange) 50%,transparent) border-box;
 }
 
 .menuBt:hover{
-    background-color: hsl(from var(--gray) h s 50);
+    background-color: hsl(from var(--gray) h s 90);
+    box-shadow: 0px 0px 5px hsl(from var(--gray) h s 80);
     font-weight: 500;
 }
 
@@ -65,6 +73,17 @@
 
 #menuBtPlay{
     text-shadow: 0.2vmax 0.2vmax var(--orange);
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes menuBtAnim {
+    0%{--border-angle: 0deg;}
+    100%{--border-angle: 360deg;}
 }
 
 /*Main Menu vége*/
