@@ -14,7 +14,11 @@
         "infoTitleControls": "Controls",
         "infoDescControls": "<span>Simple and Intuitive Controls</span><br>Navigating the game is easy and follows the classic setup. Use the WASD keys to move through the levels: press W for up, S for down, A for left, and D for right. The controls are designed to be straightforward, letting you focus entirely on the adventure!",
         "infoTitleCharacters": "Characters",
-        "infoDescCharacters": "<span>Eat or Be Eaten!</span><br>You control a gluttonous hero whose only desire is to collect juicy hamburgers. But it won't be easy: angry fruits and vegetables are hunting you down, each with unique and unpredictable behaviors. Outsmart the healthy army, dodge their attacks, and eat every burger on the map to survive!"
+        "infoDescCharacters": "<span>Eat or Be Eaten!</span><br>You control a gluttonous hero whose only desire is to collect juicy hamburgers. But it won't be easy: angry fruits and vegetables are hunting you down, each with unique and unpredictable behaviors. Outsmart the healthy army, dodge their attacks, and eat every burger on the map to survive!",
+        "settingsTitle": "Settings",
+        "gameOverTitle": "Game Over",
+        "backToMain": "Back To Main Menu",
+        "restart": "Restart"
     },
     "hu": {
         "play": "Játék",
@@ -31,7 +35,11 @@
         "infoTitleControls": "Irányítás",
         "infoDescControls": "<span>Egyszerű és kézreálló irányítás</span><br>A játékban nem kell bonyolult billentyűkombinációkkal bajlódnod, a navigáció teljesen ösztönös. A klasszikus WASD kiosztást használva könnyedén felfedezheted a pályákat: a W billentyűvel felfelé, az S-szel lefelé, az A és D gombokkal pedig balra, illetve jobbra mozoghatsz. Csak a kalandra kell koncentrálnod!",
         "infoTitleCharacters": "Karakterek",
-        "infoDescCharacters": "<span>Zabálj vagy befalnak!</span><br>Te egy falánk főhőst irányítasz, akinek minden vágya a szaftos hamburgerek begyűjtése. A dolgod azonban nem könnyű: haragos gyümölcsök és zöldségek vadásznak rád, akik mind egyedi, kiszámíthatatlan viselkedéssel próbálnak sarokba szorítani. Menekülj az egészséges sereg elől, járd túl az eszüket, és edd meg az összes hamburgert a túlélésért!"
+        "infoDescCharacters": "<span>Zabálj vagy befalnak!</span><br>Te egy falánk főhőst irányítasz, akinek minden vágya a szaftos hamburgerek begyűjtése. A dolgod azonban nem könnyű: haragos gyümölcsök és zöldségek vadásznak rád, akik mind egyedi, kiszámíthatatlan viselkedéssel próbálnak sarokba szorítani. Menekülj az egészséges sereg elől, járd túl az eszüket, és edd meg az összes hamburgert a túlélésért!",
+        "settingsTitle": "Beállítások",
+        "gameOverTitle": "Játék Vége",
+        "backToMain": "Visszatérés A Főmenübe",
+        "restart": "Újraindítás"
     },
     "ger": {
         "play": "Spiel",
@@ -48,6 +56,10 @@
         "infoTitleControls": "Steuerung",
         "infoDescControls": "<span>Einfache und intuitive Steuerung</span><br>Die Navigation im Spiel ist kinderleicht und nutzt das klassische Layout. Mit den WASD-Tasten kannst du dich mühelos durch die Level bewegen: Drücke W für oben, S für unten, A für links und D für rechts. So kannst du dich voll und ganz auf dein Abenteuer konzentrieren!",
         "infoTitleCharacters": "Die Charaktere",
-        "infoDescCharacters": "<span>Fressen oder gefressen werden!</span><br>Du steuerst einen gefräßigen Helden, dessen einziger Wunsch es ist, saftige Hamburger zu sammeln. Doch das wird nicht einfach: Zorniges Obst und Gemüse jagt dich, jedes mit einem ganz eigenen, unberechenbaren Verhalten. Überliste die gesunde Armee, weiche ihnen aus und iss alle Burger auf dem Feld, um zu überleben!"
+        "infoDescCharacters": "<span>Fressen oder gefressen werden!</span><br>Du steuerst einen gefräßigen Helden, dessen einziger Wunsch es ist, saftige Hamburger zu sammeln. Doch das wird nicht einfach: Zorniges Obst und Gemüse jagt dich, jedes mit einem ganz eigenen, unberechenbaren Verhalten. Überliste die gesunde Armee, weiche ihnen aus und iss alle Burger auf dem Feld, um zu überleben!",
+        "settingsTitle": "Einstellungen",
+        "gameOverTitle": "Aus Die Maus!",
+        "backToMain": "Zurück Zum Hauptmenü",
+        "restart": "Neu Starten"
     }
 }

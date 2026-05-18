@@ -40,7 +40,7 @@
             <option>GER</option>
         </select>
         <div id="settingsMenu">
-            <h1 id="menuTitle" style="letter-spacing: 0;">Settings</h1>
+            <h1 id="menuTitle" data-translate="settingsTitle" style="letter-spacing: 0;">Settings</h1>
 
             <section class="label">
                 <label for="inputMasterVolume" id="labelMaster" data-translate="masterVolume">Master Volume </label>
@@ -84,8 +84,19 @@
     </template>
     
     <template id="playTemp">
+        <div id="gameOverMenu" style="display: none;">
+            <h1 id="gameOverTitle" data-translate="gameOverTitle">Game Over</h1>
+            <h2 id="scoreDis">Your score: <span id="scoreNow"></span></h2>
+            <h2 id="bestScoreDis">Best score: <span id="scoreBest">-</span></h2>
+            <button id="backToMainBt" data-button="mainMenuTemp" data-translate="backToMain" class="menuBt">Back to Main Menu</button>
+            <button id="restartBt" data-button="resPlayTemp" data-translate="restart" class="menuBt">Restart</button>
+        </div>
         <section id="labyrinth">
         </section>
+    </template>
+
+    <template id="playConTemp">
+
     </template>
 </body>
 

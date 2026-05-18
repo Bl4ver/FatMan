@@ -66,6 +66,27 @@ export class UiManager {
     }
 
     ChangeTemplate(templateName) {
+        const screen = document.getElementById("screen");
+        const playCon = document.getElementById("playConTemp");
+        if (templateName == "resPlayTemp"){
+            playCon.innerHTML = "";
+            templateName = "playTemp";
+            this.engine.level = 1;
+            this.engine.labyrinth.size = { width: 14, height: 10 };
+            this.engine.score = 0;
+        }
+            
+        if (this.currentTemplateName == "playTemp" && templateName == "settingsTemp"){
+            for (const element of document.getElementsByClassName("ghost")) {
+                element.remove();
+            }
+            playCon.innerHTML = screen.innerHTML;
+        }
+
+        if (templateName == "mainMenuTemp"){
+            playCon.innerHTML = "";
+        }
+
         this.lastTemplateName = this.currentTemplateName;
         this.currentTemplateName = templateName;
         this.engine.renderer.loadScreen(this.currentTemplateName);

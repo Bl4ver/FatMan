@@ -33,7 +33,7 @@
 }
 
 .ghost-door{
-    background-color: blue;
+    background-color: var(--orange);
     /* padding: 10px; */
 }
 
@@ -71,5 +71,3 @@
 .carrot-ghost {
     background-image: url('../../src/image/carrot-front.png'); 
 }
-
-

@@ -22,6 +22,7 @@ export class InputManager {
             if (e.key === "Escape") {
                 switch (this.engine.uiManager.currentTemplateName) {
                     case "playTemp":
+                        if (document.getElementById("gameOverMenu").style.display == "none")
                         this.engine.uiManager.ChangeTemplate("settingsTemp");
                         break;
                     case "mainMenuTemp":

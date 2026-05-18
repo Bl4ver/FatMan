@@ -12,7 +12,7 @@ import { Ghost } from '../entities/ghost.js';
 export class Engine {
     constructor() {
         this.renderer = new Renderer(this);
-        this.langManager = new LangManager();
+        this.langManager = new LangManager(this);
         this.audioManager = new AudioManager();
         this.saveManager = new SaveManager(this);
         this.uiManager = new UiManager(this);
@@ -21,6 +21,7 @@ export class Engine {
         this.player = new Player(this);
         this.collisionManager = new CollisionManager(this);
         this.score = 0;
+        this.bestScore = 0;
         this.level = 1;
         this.ghosts = [];
         this.isRunning = false;

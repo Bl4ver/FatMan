@@ -10,7 +10,8 @@ export class SaveManager {
     saveGame() {
         const gameState = {
             lang: this.engine.langManager.lang || 'en',
-            volumes: this.engine.audioManager.volumes || { master: 0.5, music: 0.5, sfx: 0.5 }
+            volumes: this.engine.audioManager.volumes || { master: 0.5, music: 0.5, sfx: 0.5 },
+            bestScore: this.engine.bestScore || 0
         };
 
         localStorage.setItem('saveGame', JSON.stringify(gameState));
@@ -29,6 +30,10 @@ export class SaveManager {
             
             if (gameState.volumes) {
                 this.engine.audioManager.volumes = gameState.volumes;
+            }
+
+            if (gameState.bestScore){
+                this.engine.bestScore = gameState.bestScore;
             }
             console.log('Game loaded!');
         } else {

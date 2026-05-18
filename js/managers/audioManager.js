@@ -13,8 +13,8 @@ export class AudioManager {
         this.loadSound('button-click');
         this.loadSound('choose');
         this.loadSound('eat');
+        this.loadSound('gameover')
         
-        // Betöltjük mind a 10 győzelmi hangot
         for (let i = 1; i <= 5; i++) {
             this.loadSound(`victory${i}`);
         }

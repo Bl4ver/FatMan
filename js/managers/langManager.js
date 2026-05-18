@@ -1,8 +1,9 @@
 export class LangManager {
-    constructor() {
+    constructor(engine) {
         this.lang = 'en';
         this.translations = null;
         this.ready = this.loadLang();
+        this.engine = engine;
     }
 
     async loadLang() {
@@ -40,6 +41,10 @@ export class LangManager {
             this.lang = lang;
             /*console.log(`Language changed to: ${lang.toUpperCase()}`);*/
             this.translatePage();
+            const menuLang = document.getElementById("menuLang");
+            if (menuLang)
+                menuLang.value = this.lang.toUpperCase();
+            this.engine.saveManager.saveGame();
         }
     }
 }

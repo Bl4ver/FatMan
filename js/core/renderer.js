@@ -23,11 +23,21 @@ export class Renderer {
             this.templateContainer.appendChild(clone);
 
             if (templateName === "settingsTemp") {
+                this.engine.stop();
                 this.updateSettingUi();
             }
             else if (templateName === "playTemp") {
-                // A játéktér logikájának delegálása az Engine-nek
-                await this.engine.setupPlayMode(); 
+                if (!this.engine.isRunning)
+                    this.engine.start();
+                const playCon = document.getElementById("playConTemp");
+                if (!playCon.innerHTML.trim()){
+                    await this.engine.setupPlayMode(); // A játéktér logikájának delegálása az Engine-nek
+                    this.engine.score = 0;
+                }
+                else{
+                    document.getElementById("screen").innerHTML = playCon.innerHTML;
+                }
+
             }
 
             this.engine.langManager.translatePage();

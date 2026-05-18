@@ -17,6 +17,22 @@ export class CollisionManager {
             if (collectible) {
                 this.handleCollision(collectible);
             }
+
+            const ghost = currentCell.querySelector('.ghost');
+            if (ghost) {
+                if (this.engine.audioManager) {
+                    this.engine.audioManager.playSound('gameover'); 
+                }
+                this.engine.audioManager.playSound("gameover")
+                this.engine.stop();
+                if (this.engine.score > this.engine.bestScore)
+                    this.engine.bestScore = this.engine.score;
+                this.engine.saveManager.saveGame();
+
+                document.getElementById("gameOverMenu").style.display = "flex";
+                document.getElementById("scoreNow").innerHTML = this.engine.score;
+                document.getElementById("scoreBest").innerHTML = this.engine.bestScore;
+            }
         }
     }
 

@@ -213,6 +213,42 @@ input[type="range"]{
     font-weight: 600;
 }
 
+#gameOverMenu{
+    position: absolute;
+    z-index: 100;
+    padding: 2vmax;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-gray);
+    border: solid 0.4vmax var(--orange);
+    border-radius: 3vmax;
+    width: fit-content;
+    max-width: 70%;
+}
+
+#gameOverMenu > h2{
+    font-size: 3vmin;
+}
+
+#gameOverMenu > h2:last-of-type{
+    margin-bottom: 4vmin;
+}
+
+#gameOverMenu > button{
+    font-size: 3vmin;
+}
+
+#gameOverTitle{
+    font-family: "Nabla", system-ui;
+    letter-spacing: 1vmax;
+    text-align: center;
+    font-size: 10vmin;
+    margin-bottom: 1vmin;
+    text-wrap: wrap;
+}
+
 @media screen and (max-width: 768px) {
     #infoContainer{
         grid-template-columns: 1fr;

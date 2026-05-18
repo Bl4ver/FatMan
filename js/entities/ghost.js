@@ -54,18 +54,18 @@ export class Ghost {
         let nextStep = this.engine.labyrinth.getGhostNextStepBFS(start, end);
         
         if (nextStep) {
-            this.x = nextStep.x;
-            this.y = nextStep.y;
-            this.updateDOMPosition();
+            this.updateDOMPosition(nextStep.x, nextStep.y);
         }
     }
 
-    updateDOMPosition() {
+    updateDOMPosition(newX, newY) {
         if (!this.ghostDiv) return;
         
-        let targetCell = document.getElementById(`cell-${this.x}-${this.y}`);
+        let targetCell = document.getElementById(`cell-${newX}-${newY}`);
         if (targetCell && this.ghostDiv.parentElement !== targetCell) {
             targetCell.appendChild(this.ghostDiv);
+            this.x = newX;
+            this.y = newY;
         }
     }
 }
