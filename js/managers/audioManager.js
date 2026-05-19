@@ -48,6 +48,8 @@ export class AudioManager {
     }
 
     setVolume(value, type) {
+        console.log(value);
+        
         this.volumes[type] = value; 
         if (type === "music" && this.music) {
             this.music.volume = this.volumes.music * this.volumes.master;

@@ -51,11 +51,11 @@ export class Renderer {
     updateSettingUi() {
         console.log('Updating settings UI with current audio volumes');
 
-        document.getElementById("inputMasterVolume").value = this.engine.audioManager.volumes.master * 100;
-        document.getElementById("masterVolumeValue").innerHTML = this.engine.audioManager.volumes.master * 100;
-        document.getElementById("inputMusicVolume").value = this.engine.audioManager.volumes.music * 100;
-        document.getElementById("musicVolumeValue").innerHTML = this.engine.audioManager.volumes.music * 100;
-        document.getElementById("inputSFXVolume").value = this.engine.audioManager.volumes.sfx * 100;
-        document.getElementById("sfxVolumeValue").innerHTML = this.engine.audioManager.volumes.sfx * 100;
+        document.getElementById("inputMasterVolume").value = Math.round(this.engine.audioManager.volumes.master * 100);
+        document.getElementById("masterVolumeValue").innerHTML = Math.round(this.engine.audioManager.volumes.master * 100);
+        document.getElementById("inputMusicVolume").value = Math.round(this.engine.audioManager.volumes.music * 100);
+        document.getElementById("musicVolumeValue").innerHTML = Math.round(this.engine.audioManager.volumes.music * 100);
+        document.getElementById("inputSFXVolume").value = Math.round(this.engine.audioManager.volumes.sfx * 100);
+        document.getElementById("sfxVolumeValue").innerHTML = Math.round(this.engine.audioManager.volumes.sfx * 100);
     }
 }

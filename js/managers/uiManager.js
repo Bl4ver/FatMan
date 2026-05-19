@@ -45,21 +45,21 @@ export class UiManager {
 
         document.addEventListener('input', (e) => {
             if (e.target.id === 'inputMasterVolume') {
-                const volume = e.target.value;
-                document.getElementById("masterVolumeValue").innerHTML = volume;
-                this.engine.audioManager.setVolume(volume / 100, "master");
+                const volume = Number(e.target.value);
+                document.getElementById("masterVolumeValue").innerText = volume;
+                this.engine.audioManager.setVolume((volume / 100).toFixed(2), "master");
             }
 
             if (e.target.id === 'inputMusicVolume') {
                 const volume = e.target.value;
-                document.getElementById("musicVolumeValue").innerHTML = volume;
-                this.engine.audioManager.setVolume(volume / 100, "music");
+                document.getElementById("musicVolumeValue").innerText = volume;
+                this.engine.audioManager.setVolume((volume / 100).toFixed(2), "music");
             }
 
             if (e.target.id === 'inputSFXVolume') {
                 const volume = e.target.value;
-                document.getElementById("sfxVolumeValue").innerHTML = volume;
-                this.engine.audioManager.setVolume(volume / 100, "sfx");
+                document.getElementById("sfxVolumeValue").innerText = volume;
+                this.engine.audioManager.setVolume((volume / 100).toFixed(2), "sfx");
             }
             this.engine.saveManager.saveGame();
         });
